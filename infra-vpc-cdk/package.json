@@ -1,3 +1,27 @@
-npm init
-npm install express aws-cdk-lib --save
-npm install typescript --save-dev
+{
+  "name": "infra-vpc-cdk",
+  "version": "1.0.0",
+  "description": "Setting up a VPC in Sandbox AWS account",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Thangadurai",
+  "license": "ISC"
+}
+"dependencies": {
+  "express": "^4.17.1",
+  "aws-cdk-lib": "^2.0.0"
+},
+"devDependencies": {
+  "typescript": "^4.4.4",
+  "@types/node": "^16.7.0"
+}
+"scripts": {
+  "build": "tsc",
+  "test": "jest"
+}
+"engines": {
+  "node": ">=16.0.0"
+}
