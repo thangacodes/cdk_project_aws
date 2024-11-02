@@ -2,7 +2,7 @@ name: CDK app deployment
 
 on:
     push:
-        branches: ["main"]
+        branches: ["PSDART-45342"]
 jobs:
     aws_cdk:
         runs_on: ubuntu-latest
