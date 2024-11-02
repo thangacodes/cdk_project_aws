@@ -8,10 +8,8 @@
   "dependencies": {
     "@aws-cdk/core": "^1.0.0",
     "@aws-cdk/aws-s3": "^1.0.0"
-    // Add other CDK dependencies here
   },
   "devDependencies": {
     "aws-cdk": "^1.0.0"
-    // Add development dependencies here
   }
 }
