@@ -16,7 +16,7 @@ class SandboxVpc(cdk.Stack):
 
 app = cdk.App()
 # Correcting the environment parameters
-account = os.getenv('AWS_ACCOUNT_ID', '282526987325')
+account = os.getenv('AWS_ACCOUNT_ID', '282526987315')
 region = os.getenv('AWS_REGION', 'ap-south-1')
 
 SandboxVpc(app, "Sandbox",
