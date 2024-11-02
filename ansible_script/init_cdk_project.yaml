@@ -1,0 +1,62 @@
+---
+- hosts: localhost
+  become: yes
+  gather_facts: true
+  tasks:
+    - name: Create a custom CDK project directory
+      command: mkdir -p ./infra-vpc-cdk
+      register: vpc_out
+    - debug: 
+        msg: "{{ vpc_out }}"
+    - name: Install AWS CDK globally
+      command: npm install -g aws-cdk
+      register: cdk_install_out
+    - debug:
+        msg: "{{ cdk_install_out }}"
+    - name: Initialize CDK app in the specified directory
+      command: cdk init app --language python
+      args:
+        chdir: ./infra-vpc-cdk
+      register: init_out
+    - debug:
+        msg: "{{ init_out }}"
+    - name: Create Python virtual environment
+      command: python3 -m venv .venv
+      args:
+        chdir: ./infra-vpc-cdk
+      register: venv_out
+    - debug:
+        msg: "{{ venv_out }}"
+    - name: Upgrade pip in the virtual environment
+      command: .venv/bin/pip install --upgrade pip
+      args:
+        chdir: ./infra-vpc-cdk
+      register: pip_upgrade_out
+    - debug:
+        msg: "{{ pip_upgrade_out }}"
+    - name: Install AWS CDK Python libraries
+      command: .venv/bin/pip install aws-cdk-lib constructs
+      args:
+        chdir: ./infra-vpc-cdk
+      register: cdk_python_install_out
+    - debug:
+        msg: "{{ cdk_python_install_out }}"
+    - name: Verify installation of CDK in virtual environment
+      command: ls -l .venv/bin
+      args:
+        chdir: ./infra-vpc-cdk
+      register: venv_bin_contents
+    - debug:
+        msg: "{{ venv_bin_contents }}"
+    - name: Bootstrap CDK
+      command: .venv/bin/cdk bootstrap
+      args:
+        chdir: ./infra-vpc-cdk
+      register: bootstrap_out
+    - debug:
+        msg: "{{ bootstrap_out }}"
+    - name: List out the created folder structure for infra-vpc-cdk
+      command: ls -l ./infra-vpc-cdk
+      register: list_out
+    - debug: 
+        msg: "{{ list_out }}"
