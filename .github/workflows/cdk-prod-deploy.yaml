@@ -41,7 +41,14 @@ jobs:
       - name: Synth Check
         working-directory: ./infra-vpc-cdk
         run: cdk synth
-      
+
+      - name: Request Approval
+        id: approval
+        run: echo "Please approve the deployment by responding to this request."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Deploy stack
         working-directory: ./infra-vpc-cdk
+        if: steps.approval.outputs.approval == 'true'  # Assuming you handle this condition appropriately
         run: cdk deploy --all --require-approval never
