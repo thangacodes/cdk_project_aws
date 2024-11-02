@@ -2,7 +2,7 @@ name: CDK app deployment
 
 on:
   push:
-    branches: ["PSDART-45342"]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
