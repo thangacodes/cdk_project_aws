@@ -17,7 +17,7 @@ jobs:
                 node-version: 16
                 cache: "npm"
             - name: Install root dependencies
-              run: npm install
+              run: npm ci
             - name: Install dependencies
               working-directory: ./infra-vpc-cdk
               run: npm ci
