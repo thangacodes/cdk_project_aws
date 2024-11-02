@@ -3,6 +3,7 @@ name: CDK app deployment
 on:
   push:
     branches: ["PSDART-45342"]
+  workflow_dispatch:
 
 jobs:
   aws_cdk:
