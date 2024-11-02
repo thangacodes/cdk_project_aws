@@ -1,5 +1,5 @@
 {
-  "name": "your-root-project",
+  "name": "cdk_project_aws",
   "version": "1.0.0",
   "scripts": {
     "build": "echo Building...",
