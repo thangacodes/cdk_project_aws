@@ -27,8 +27,8 @@ jobs:
               uses: aws-actions/configure-aws-credentials@master
               with:
                 AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-                AWS_SECRET_ACCESS_KEY: ${{ secret.AWS_SECRET_ACCESS_KEY }}
-                AWS_REGION: ${{ AWS_REGION }}
+                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                AWS_REGION: ${{ secrets.AWS_REGION }}
             - name: Synth Check
               working-directory: ./infra-vpc-cdk
               run: cdk synth
