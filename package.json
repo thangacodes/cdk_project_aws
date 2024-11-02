@@ -1,0 +1,12 @@
+{
+  "name": "your-root-project",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "echo Building...",
+    "test": "echo Testing..."
+  },
+  "dependencies": {
+    "@aws-cdk/core": "^1.0.0",
+    "@aws-cdk/aws-s3": "^1.0.0"
+  }
+}
