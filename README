@@ -22,3 +22,16 @@ It will then load the .bashrc file, from which it will retrieve the required API
 To initialize the project, navigate to the ansible_script folder and follow the procedure below:
 $ cd ansible_script
 $ ansible-playbook init_cdk_project.yaml
+
+# Outcome should be,
+Our aim is to create a VPC with three private and public subnets, along with the required components such as an Internet Gateway, NAT Gateway, and route tables for both the private and public subnets.
+
+VPC Stack name is "SandboxVpc"
+
+The following CDK commands will be called and executed as well.
+
+$ cdk ls          //list all stacks in the app
+$ cdk synth      //emits the synthesized CloudFormation template
+$ cdk deploy    //deploy this stack to your default AWS account/region
+$ cdk diff     //compare deployed stack with current state
+$ cdk docs    //open CDK documentation
