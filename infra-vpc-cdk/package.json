@@ -1,0 +1,15 @@
+{
+  "name": "infra-vpc-cdk",
+  "version": "1.0.0",
+  "scripts": {
+    "synth": "cdk synth",
+    "deploy": "cdk deploy --all --require-approval never"
+  },
+  "dependencies": {
+    "@aws-cdk/core": "^1.0.0",
+    "@aws-cdk/aws-s3": "^1.0.0"
+  },
+  "devDependencies": {
+    "aws-cdk": "^1.0.0"
+  }
+}

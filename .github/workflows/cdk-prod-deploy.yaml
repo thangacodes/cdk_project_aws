@@ -1,0 +1,55 @@
+name: CDK app deployment
+
+on:
+  push:
+    branches: ["PSDART-45342"]
+  workflow_dispatch:
+
+jobs:
+  aws_cdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      
+      - name: Install npm dependencies
+        run: npm install
+      
+      - name: Install AWS CDK globally
+        run: npm install -g aws-cdk
+      
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+      
+      - name: Install dependencies for infra-vpc-cdk
+        working-directory: ./infra-vpc-cdk
+        run: npm install
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      
+      - name: Synth Check
+        working-directory: ./infra-vpc-cdk
+        run: cdk synth
+
+      - name: Request Approval
+        id: approval
+        run: echo "Please approve the deployment by responding to this request."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy stack
+        working-directory: ./infra-vpc-cdk
+        if: steps.approval.outputs.approval == 'true'  # Assuming you handle this condition appropriately
+        run: cdk deploy --all --require-approval never
