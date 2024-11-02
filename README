@@ -8,6 +8,17 @@ Coming to the project repo,
 This project repository contains the AWS Cloud Development Kit (AWS CDK) and includes an Ansible playbook that sets up a local environment. 
 It initializes a custom CDK project, creates necessary folders, and activates a virtual environment, among other tasks.
 
+Before you begin the CDK deployment, you need to set up AWS credentials on the system where you are performing the deployment.
+
+# Go to the ansible_script folder.
+$ cd ansible_script
+Execute the command sh aws-credential-setup.sh
+$ sh aws-credential-setup.sh
+
+# Note:
+This is a bash script that will prompt you to enter your IAM credentials, such as your access key, secret access key, region, and output format. 
+It will then load the .bashrc file, from which it will retrieve the required API information to connect to your AWS account.
+
 To initialize the project, navigate to the ansible_script folder and follow the procedure below:
 $ cd ansible_script
 $ ansible-playbook init_cdk_project.yaml
