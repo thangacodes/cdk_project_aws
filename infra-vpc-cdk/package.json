@@ -1,27 +1,17 @@
 {
   "name": "infra-vpc-cdk",
   "version": "1.0.0",
-  "description": "Setting up a VPC in Sandbox AWS account",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "synth": "cdk synth",
+    "deploy": "cdk deploy --all --require-approval never"
   },
-  "keywords": [],
-  "author": "Thangadurai",
-  "license": "ISC"
-}
-"dependencies": {
-  "express": "^4.17.1",
-  "aws-cdk-lib": "^2.0.0"
-},
-"devDependencies": {
-  "typescript": "^4.4.4",
-  "@types/node": "^16.7.0"
-}
-"scripts": {
-  "build": "tsc",
-  "test": "jest"
-}
-"engines": {
-  "node": ">=16.0.0"
+  "dependencies": {
+    "@aws-cdk/core": "^1.0.0",
+    "@aws-cdk/aws-s3": "^1.0.0"
+    // Add other CDK dependencies here
+  },
+  "devDependencies": {
+    "aws-cdk": "^1.0.0"
+    // Add development dependencies here
+  }
 }
