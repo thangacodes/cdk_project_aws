@@ -2,14 +2,18 @@
 ==============
 
 What is AWS CDK (Cloud Development Kit)?
+
 AWS CDK (Cloud Development Kit) is an open-source software development framework that allows you to define cloud infrastructure using familiar programming languages like TypeScript, JavaScript, Python, Java, and C#. With AWS CDK, you can model your cloud resources as code and deploy them using AWS CloudFormation.
 
 Coming to the project repo,
+
 This project repository contains the AWS Cloud Development Kit (AWS CDK) and includes an Ansible playbook that sets up a local environment. 
+
 It initializes a custom CDK project, creates necessary folders, and activates a virtual environment, among other tasks.
 
 Before you begin the CDK deployment, you need to set up AWS credentials on the system where you are performing the deployment.
 
+```bash
 # Go to the ansible_script folder.
 $ cd ansible_script
 Execute the command sh aws-credential-setup.sh
